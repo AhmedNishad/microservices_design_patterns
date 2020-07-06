@@ -1,14 +1,15 @@
-﻿using System;
+﻿using paw.mvp.data.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace paw.mvp.data.Customer
 {
-    public class Breed
+    public class Breed: AuditableEntity
     {
-        public int BreedId { get; set; }
         public string BreedName { get; set; }
+        public string BreedImage { get; set; }
         public BreedType Type { get; set; }
     }
 }

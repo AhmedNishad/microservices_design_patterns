@@ -1,6 +1,7 @@
 ﻿using paw.mvp.data.Appointment;
 using paw.mvp.data.Common;
 using paw.mvp.data.Customer;
+using paw.mvp.data.ResourceAvailability;
 using paw.mvp.data.Service;
 using System;
 using System.Collections.Generic;
@@ -51,6 +52,18 @@ namespace paw.mvp.data
             var appointment = new AppointmentEntity(durations, customer, pets).AddResources(resources).AddService(service);
 
             Database.Appointments.Add(appointment);
+            Database.SaveChanges();
+        }
+
+        public void UpdateCalendarForRoom(int resourceId, Calendar calendar)
+        {
+            var resource = Database.Rooms.FirstOrDefault(r => r.Id == resourceId);
+            if(resource == null)
+            {
+                throw new Exception("Could not find room");
+            }
+
+            resource.AssignCalander(calendar);
             Database.SaveChanges();
         }
     }

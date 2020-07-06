@@ -9,7 +9,17 @@ namespace paw.mvp.data.Common
     public class TimeDuration
     {
         public DateTime StartDateTime { get; set; }
-        public TimeSpan Duration { get { return TimeSpan.FromHours(1);  } }
-        
+        public TimeSpan Duration { get { return _duration != null ? _duration :  TimeSpan.FromHours(1);  } }
+        private TimeSpan _duration { get; private set; }
+        public TimeDuration(DateTime startDate)
+        {
+            StartDateTime = startDate;   
+        }
+
+        public TimeDuration SetDuration(TimeSpan duration)
+        {
+            _duration = duration;
+            return this;
+        }
     }
 }

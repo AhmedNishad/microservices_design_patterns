@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace paw.mvp.data.Employee
 {
-    public class Salary
+    public class Salary: PayRoll
     {
+
     }
 }

@@ -14,9 +14,9 @@ namespace paw.mvp.data.Service
             ResourceCategory ResourceCategory, TimeSpan duration) :
             base(TenantId, BranchId, ServiceCategory, ResourceCategory)
         {
-            if (ServiceCategory != ServiceCategory.Boarding)
+            if (ServiceCategory != ServiceCategory.Grooming)
             {
-                throw new InvalidEnumArgumentException("Cannot create non boarding service");
+                throw new InvalidEnumArgumentException("Cannot create non Grooming service");
             }
 
             Duration = duration;

@@ -1,4 +1,5 @@
-﻿    using System;
+﻿using paw.mvp.data.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 namespace paw.mvp.data.Common
 {
     // Value Object
-    public class PhoneNumber
+    public class PhoneNumber: ValueObject
     {
         public int Number { get; set; }
         public int CountryCode { get; set; }
@@ -22,6 +23,12 @@ namespace paw.mvp.data.Common
             {
                 throw new Exception("Please Enter valid country code");
             }
+        }
+
+        protected override IEnumerable<object> GetAtomicValues()
+        {
+            yield return Number;
+            yield return CountryCode;
         }
     }
 }

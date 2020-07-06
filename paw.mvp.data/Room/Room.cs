@@ -13,10 +13,10 @@ namespace paw.mvp.data.Room
     {
         public string UniqueName { get; set; } // Composite Primary Key with Id
         public int Capacity { get; set; }
-        public int TenantId { get; set; }
         public int BranchId { get; set; }
         public SpaceType SpaceType { get; set; }
-        public List<ServiceEntity> OfferedServices { get; set; } // Acheive Many to Many Mapping?
+        public List<ServiceEntity> OfferedServices { get; set; } // Acheive Many to Many Mapping? Do we put a similar list on services
+                                                                 // Like Offered By?
         
     }
 }

@@ -17,6 +17,7 @@ namespace paw.mvp.data.Employee
         private List<Grooming> ProficientServices { get; set; }
         public Gender Gender { get; set; }
         public EmployeeType EmployeeType { get; private set; }
+        public bool IsActive { get; private set; }
         public EmployeeEntity(string firstName, string lastName, PhoneNumber number, string email, PayRoll payRoll, EmployeeType type)
         {
             FirstName = firstName;
@@ -40,6 +41,11 @@ namespace paw.mvp.data.Employee
             }
 
             return ProficientServices;
+        }
+
+        public void ToggleActivity()
+        {
+            IsActive = !IsActive;
         }
     }
 }

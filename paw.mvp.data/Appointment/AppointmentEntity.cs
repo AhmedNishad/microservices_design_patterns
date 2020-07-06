@@ -17,14 +17,18 @@ namespace paw.mvp.data.Appointment
         public List<Resource> Resources { get; set; }
         public List<TimeDuration> Durations { get; set; }
         public CustomerEntity Customer{ get; set; }
-        public List<Pet> Pets { get; set; } // Should a pet have it's own set of appointments and resources?
+        public List<Pet> Pets { get; set; } // Should a pet have it's own set of appointment instances and resources?
         public List<AppointmentInstance> AppointmentInstances { get; set; }
+        public Payment Payment { get; set; }
 
         public AppointmentEntity( List<TimeDuration> timeDurations
-            , CustomerEntity customer, List<Pet> pets)
+            , CustomerEntity customer, List<Pet> pets, PaymentMethod paymentMethod)
         {
             Durations = timeDurations;
             Customer = customer;
+            Payment = new Payment(Service.Price, new Price { Currency = Currency.UsDollars, Value = (Service.Price.Value * .25m) },
+                customer.Debit, paymentMethod);
+            Customer.AddPayment(Payment);
             Pets = pets;
             AppointmentInstances = new List<AppointmentInstance>();
             foreach(var duration in Durations)
@@ -32,6 +36,8 @@ namespace paw.mvp.data.Appointment
                 var instance = new AppointmentInstance { Date = duration.StartDateTime, AppointmentStatus = AppointmentStatus.Awaiting };
             }
         }
+
+       
 
         public AppointmentEntity AddService(ServiceEntity service)
         {
