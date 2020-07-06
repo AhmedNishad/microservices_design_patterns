@@ -1,0 +1,35 @@
+﻿Do we make the time durations a timespan
+
+Service type of a service determines the subclass
+Are boarding, grooming and daycare a subclass of service
+Service type an enum?
+
+What do we do about Tenant
+
+Tenant holds information about the Admin
+Resource type can it be employee and room
+Is Available is a derived attribute? And isn't it stringent on the time (Or is this a global condition? Like not available indefinitely?)
+Should this belong on the service microservice
+
+How do we determine if duration is time based or in out? (Abstract or interface)
+
+Does location of the room have a dependency on the tenant
+
+What is state in time slot
+
+Every location belonging to a tenant has a calendar which holds operating days, holidays. It can be robustly updated and generated according to
+needs. It has sensible default values
+
+location also has many rooms which ena
+
+Doesn't resource availability to employee
+
+Rooms and employeese make schedules (Autogenerate based on calendar and customizable) 
+Schedule has date and list of time slots (Duration) - Validation based on whether that adds up to 24 hours
+Slot also has state (Awaiting, Ongoing, Complete) - Derived attributes
+
+Capacity of a resource can fluctuate based on the date 
+
+How do we persist identity of records across microservices
+
+How do we manage the many to many relationship between rooms and services
